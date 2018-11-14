@@ -1,1 +1,28 @@
-<div>{{title}}</div>
+<div class="title">{{title}}</div>
+<button (click)="handleButtonClick(username.value)">Click me!</button>
+<input type="text" #username>
+
+<div *ngIf="showContent">
+  Hidden content :D
+</div>
+
+<ul>
+  <li *ngFor="let person of persons; let i = index">
+    <span
+      class="status"
+      [class.checked-in]="person.checkedIn">
+    </span>
+    {{ i }}: {{ person.name }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let person of persons; let i = index">
+    <span
+      class="status"
+      [ngClass]="{'checked-in': person.checkedIn}">
+    </span>
+    {{ i }}: {{ person.name | reverse | titlecase }}
+    {{ person.state }}
+  </li>
+</ul>
